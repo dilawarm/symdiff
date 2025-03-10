@@ -49,4 +49,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: coverage-results
-          path: .out/coverage.xml 
+          path: .out/coverage.xml
