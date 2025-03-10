@@ -1,0 +1,48 @@
+[tool.pytest.ini.options]
+minversion = "6.0"
+addopts = "-ra -q --junitxml=.out/test_results.xml -n auto --ruff --ruff-format"
+testpaths = [
+    "tests",
+]
+
+[project.scripts]
+symdiff = "symdiff.main:main"
+
+[build-system]
+requires = ["setuptools>=64", "setuptools_scm>=8"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["symdiff"]
+
+[tool.setuptools_scm]
+version_scheme = "post-release"
+
+[project]
+name = "symdiff"
+version = "0.1.0"
+description = "symbolic differentiation"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.uv]
+native-tls = true
+link-mode = "copy"
+dev-dependencies = [
+    "black>=25.1.0",
+    "genbadge[tests]>=1.1.1",
+    "isort>=6.0.1",
+    "pre-commit>=4.1.0",
+    "pytest>=8.3.5",
+    "pytest-cov>=6.0.0",
+]
+
+[tool.isort]
+profile = "black"
+line_length = 88
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+ensure_newline_before_comments = true
