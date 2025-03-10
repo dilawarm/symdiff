@@ -39,7 +39,7 @@ coverage:
 
 requirements:
 	uv export --no-hashes --no-dev > requirements.txt
-	uv export --no-hashes > requirements-test.txt
+	uv export --no-hashes > requirements-dev.txt
 
 clean-pycache:
 	find . -type d -name '__pycache__' -print0 | xargs -0 -I {} /bin/rm -rf "{}"

@@ -10,3 +10,12 @@ repos:
     hooks:
     -   id: isort
         args: ["--profile", "black"]
+
+-   repo: local
+    hooks:
+    -   id: update-requirements
+        name: Update requirements.txt files
+        entry: uv run make requirements
+        language: system
+        pass_filenames: false
+        always_run: true
