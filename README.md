@@ -1,22 +1,22 @@
 ![Tests](https://github.com/dilawarm/symdiff/blob/gh-pages/badges/tests-badge.svg)
 ![Coverage](https://github.com/dilawarm/symdiff/blob/gh-pages/badges/coverage-badge.svg)
 
-# symdiff
+# 🧮 symdiff
 
 A symbolic differentiation tool for polynomial expressions.
 
-## Description
+## 📝 Description
 
 `symdiff` is a Python library that performs symbolic differentiation on polynomial expressions. It parses mathematical expressions into a tree of expression objects and applies differentiation rules to compute derivatives.
 
-## Features
+## ✨ Features
 
 - Differentiate polynomial expressions
 - Interactive command-line interface
 - Support for standard mathematical notation
 - Simplify derivative expressions
 
-## Installation
+## 🚀 Installation
 
 ### Prerequisites
 
@@ -52,7 +52,7 @@ powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
    source .venv/bin/activate
    ```
 
-## Usage
+## 🔍 Usage
 
 ### Command Line
 
@@ -61,7 +61,7 @@ powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
 symdiff "x^2 + 2*x + 1"
 
 # Differentiate with respect to a different variable
-symdiff "y^3 + 2*y" -v "y"
+symdiff "y^3 + 2*y" -v y
 
 # Interactive mode
 symdiff
@@ -76,17 +76,17 @@ result = differentiate("x^2 + 2*x + 1")
 print(result) # d/dx(x^2 + 2*x + 1) = 2*x + 2
 ```
 
-## Development
+## 🛠️ Development
 
 - Run tests: `uv run make test`
 - Check code formatting: `uv run make check`
 - Format code: `uv run make format`
 - Generate test badges: `uv run make badges`
 
-## Contributors
+## 👥 Contributors
 
 See [CONTRIBUTORS.md](CONTRIBUTORS.md) for a list of contributors and information on how to contribute to this project.
 
-## License
+## 📄 License
 
 This project is licensed under the terms of the [LICENSE](LICENCE) file included in the repository.
