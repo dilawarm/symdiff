@@ -93,6 +93,15 @@ def test_different_variables():
     assert str(differentiate("x*y^2 + y*z^2", variable="y")) == "x*2*y + z^2"
 
 
+def test_negative_exponents():
+    """Test differentiation of expressions with negative exponents"""
+    assert str(differentiate("x^-1")) == "-x^-2"
+    assert str(differentiate("x^-2")) == "-2*x^-3"
+    assert str(differentiate("2*x^-1")) == "-2*x^-2"
+    assert str(differentiate("x^-3 + x^2")) == "-3*x^-4 + 2*x"
+    assert str(differentiate("x^-0.5")) == "-0.5*x^-1.5"
+
+
 def test_parser():
     """Test the expression parser"""
 
@@ -125,3 +134,11 @@ def test_parser():
     assert isinstance(expr, Sum)
     assert len(expr.terms) == 3
     assert str(expr) == "x^2 + -2*x + 1"
+
+    expr = parse_expression("x^-1")
+    assert isinstance(expr, Power)
+    assert str(expr) == "x^-1"
+
+    expr = parse_expression("x^-2 + 3*x^-1")
+    assert isinstance(expr, Sum)
+    assert str(expr) == "x^-2 + 3*x^-1"

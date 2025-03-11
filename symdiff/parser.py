@@ -5,7 +5,9 @@ This module contains functions for parsing mathematical expressions
 into expression objects.
 """
 
+import re
 from functools import partial
+from typing import List
 
 from symdiff.expressions import (
     Constant,
@@ -21,7 +23,10 @@ from symdiff.expressions import (
 def parse_factor(factor: str, variable: str) -> Expression:
     """Parse a single factor (power, variable, or constant)."""
     if "^" in factor:
-        base, exponent = factor.split("^")
+        parts = factor.split("^", 1)
+        base = parts[0]
+        exponent = parts[1]
+
         if base == variable:
             return Power(Variable(variable), float(exponent))
         if base.isalpha():
@@ -56,7 +61,10 @@ def parse_term(term: str, variable: str) -> Expression:
 
 def parse_expression(expression_str: str, variable: str = "x") -> Expression:
     """Parse a polynomial expression string into an Expression object."""
-    expression_str = expression_str.replace(" ", "").replace("-", "+-")
+
+    expression_str = expression_str.replace(" ", "")
+    expression_str = re.sub(r"(?<!\^)-", "+-", expression_str)
+
     if expression_str.startswith("+"):
         expression_str = expression_str[1:]
 
@@ -70,6 +78,6 @@ def parse_expression(expression_str: str, variable: str = "x") -> Expression:
             return Negation(parse_term(term[1:], variable))
         return parse_term(term, variable)
 
-    parsed_terms = list(map(parse_with_negation, terms))
+    parsed_terms: List[Expression] = list(map(parse_with_negation, terms))
 
     return parsed_terms[0] if len(parsed_terms) == 1 else Sum(parsed_terms)

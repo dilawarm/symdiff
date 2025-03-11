@@ -37,6 +37,12 @@ def format_result(expr: Expression) -> Expression:
         result_str,
     )
 
+    result_str = re.sub(r"(\d+)\*-", r"-\1*", result_str)
+
+    result_str = result_str.replace("-1*", "-")
+
+    result_str = re.sub(r"(?<![0-9])1\*", "", result_str)
+
     if result_str != str(expr):
         return CustomExpression(expr, result_str)
 
