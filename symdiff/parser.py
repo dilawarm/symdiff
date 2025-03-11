@@ -7,7 +7,6 @@ into expression objects.
 
 import re
 from functools import partial
-from typing import List
 
 from symdiff.expressions import (
     Constant,
@@ -78,6 +77,6 @@ def parse_expression(expression_str: str, variable: str = "x") -> Expression:
             return Negation(parse_term(term[1:], variable))
         return parse_term(term, variable)
 
-    parsed_terms: List[Expression] = list(map(parse_with_negation, terms))
+    parsed_terms: list[Expression] = list(map(parse_with_negation, terms))
 
     return parsed_terms[0] if len(parsed_terms) == 1 else Sum(parsed_terms)
