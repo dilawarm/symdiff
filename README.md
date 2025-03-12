@@ -61,7 +61,7 @@ powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
 symdiff "x^2 + 2*x + 1"
 
 # Differentiate with respect to a different variable
-symdiff "y^3 + 2*y" -v y
+symdiff "y^3 + 2*y" -v "y"
 
 # Interactive mode
 symdiff
