@@ -73,7 +73,7 @@ symdiff
 from symdiff.core import differentiate
 
 result = differentiate("x^2 + 2*x + 1")
-print(result) # d/dx(x^2 + 2*x + 1) = 2*x + 2
+print(result) # 2*x + 2
 ```
 
 ## 🛠️ Development
