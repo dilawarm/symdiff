@@ -53,6 +53,9 @@ def test_complex_expressions():
     assert str(differentiate("5*x^3 + 9*x^2 + 18*x^7")) == "15*x^2 + 18*x + 126*x^6"
     assert str(differentiate("5*x^30 + 9*x^2 + 18*x^7")) == "150*x^29 + 18*x + 126*x^6"
     assert str(differentiate("x^0 + x^1")) == "1"
+    assert (
+        str(differentiate("0.5*x^3 + 1.5*x^2 - 0.1*x^9")) == "1.5*x^2 + 3*x - 0.9*x^8"
+    )
 
 
 def test_negation():
