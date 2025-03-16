@@ -24,14 +24,14 @@ def parse_factor(factor: str, variable: str) -> Expression:
     if "^" in factor:
         parts = factor.split("^", 1)
         base = parts[0]
-        exponent = parts[1]
+        exponent = float(parts[1])
 
         if base == variable:
-            return Power(Variable(variable), float(exponent))
+            return Power(Variable(variable), exponent)
         if base.isalpha():
-            return Power(Variable(base), float(exponent))
+            return Power(Variable(base), exponent)
         try:
-            return Constant(float(base) ** float(exponent))
+            return Constant(float(base) ** exponent)
         except ValueError:
             raise ValueError(f"Invalid power expression: {factor}")
 
